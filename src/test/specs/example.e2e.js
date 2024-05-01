@@ -1,3 +1,4 @@
+// @ts-check
 import LoginPage from '../pageobjects/herokuApp/login.page.js';
 import SecurePage from '../pageobjects/herokuApp/secure.page.js';
 
