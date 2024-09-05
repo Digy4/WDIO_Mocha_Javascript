@@ -1,8 +1,34 @@
 import video_reporter from 'wdio-video-reporter';
 import allure from '@wdio/allure-reporter';
 import { setOptions } from 'expect-webdriverio'
+import { DigyRunnerService } from '@digy4/digyrunner-wdio/DigyRunnerService';
+//const { DigyRunnerService } = require('@digy4/digyrunner-wdio/DigyRunnerService');
 
 global.allure = allure;
+
+const digyRunnerConfig = {
+    lob: "digydashboard",
+    application: "checkout",
+    release: "release",
+    projectName: "WdioMocha",
+    suiteName: "Regression",
+    teamName: "Digy4",
+    appVersion: "2.0",
+    environment: "test",
+    moduleName: "SomeModuleName",
+    tester: "Joe Bloggs",
+    ba: "Joe Bloggs",
+    developer: "Joe Bloggs",
+    region: "us-east-2",
+    protocol: 'https',
+    strictSSL: false,
+    port: 443,
+    resultsSummaryUrl: 'https://3qsmhuqr59.execute-api.us-east-1.amazonaws.com/digy4-test/v3/resultsSummary',
+    logsUploadBaseUrl: 'https://3qsmhuqr59.execute-api.us-east-1.amazonaws.com/digy4-test/getPresignedUrl',
+    projectPlanUrl: 'https://z85m9oisq5.execute-api.us-east-1.amazonaws.com/test/users/project-plan-details',
+    clientId: 'f1527f7888d133118fb59646bf06d13e:9b93f9ce24709c05e6b89d4b1dcc20db',
+    clientSecret: '0f65851f18521ee7b0ef6216a1f9a1d7:d6bba3e5c7d3bc31e5e0c9b144d59ef7',
+};
 
 export const config = {
     //
@@ -81,10 +107,10 @@ export const config = {
             ],
         }
     },
-    {
-        browserName: 'MicrosoftEdge',
-        // maxInstances: 5
-    }
+    //{
+    //    browserName: 'MicrosoftEdge',
+    //    // maxInstances: 5
+    //}
     // {
     //     // maxInstances: 5,
     //     browserName: 'firefox',
@@ -147,7 +173,14 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    services: [
+        [new DigyRunnerService(digyRunnerConfig)],
+        //'edgedriver',
+        //'geckodriver',
+        ['chromedriver', {
+            chromedriverCustomPath: "./chromedriver",
+        }]
+    ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
