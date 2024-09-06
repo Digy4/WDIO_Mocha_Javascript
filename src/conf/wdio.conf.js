@@ -105,7 +105,12 @@ export const config = {
                 // '--headless',
                 '--window-size=1440,735'
             ],
-        }
+        },
+        "goog:loggingPrefs": {
+            'driver': 'INFO',
+            'browser': 'DEBUG',
+            'performance': 'INFO'
+        },
     },
     //{
     //    browserName: 'MicrosoftEdge',
@@ -206,9 +211,8 @@ export const config = {
         'dot',
         [video_reporter, {
             saveAllVideos: true,       // If true, also saves videos for successful test cases
-            videoSlowdownMultiplier: 15, // Higher to get slower videos, lower for faster videos [Value 1-100]
-            videoRenderTimeout: 5,
-            outputDir: './reports/video-reports',
+            videoSlowdownMultiplier: 5, // Higher to get slower videos, lower for faster videos [Value 1-100]
+            videoFormat: 'mp4'
         }],
         ['allure', {
             outputDir: './reports/video-reports/allure-raw',
