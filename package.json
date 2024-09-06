@@ -48,7 +48,7 @@
         "GitHub actions"
     ],
     "dependencies": {
-        "@digy4/digyrunner-wdio": "^0.0.47",
+        "@digy4/digyrunner-wdio": "^0.0.55",
         "chromedriver": "^128.0.1",
         "edgedriver": "^5.6.1",
         "wdio-chromedriver-service": "^8.1.1"
